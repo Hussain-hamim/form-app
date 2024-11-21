@@ -20,3 +20,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+// until you know
+// why you're going
+// to use something
+// don't use it
