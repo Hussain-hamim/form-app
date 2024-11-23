@@ -2,10 +2,15 @@ import { Entypo, Feather } from "@expo/vector-icons";
 import { Redirect, Tabs } from "expo-router";
 import { theme } from "@/theme";
 import { Text } from "react-native";
+import { useUserStore } from "@/store/userStore";
 
-const hasFinishedOnboarding = true;
+// const hasFinishedOnboarding = true;
 
 export default function Layout() {
+  const hasFinishedOnboarding = useUserStore(
+    (state) => state.hasFinishedOnboarding
+  );
+
   if (!hasFinishedOnboarding) {
     return <Redirect href="/onboarding" />;
   }
