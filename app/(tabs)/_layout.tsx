@@ -1,9 +1,15 @@
 import { Entypo, Feather } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import { theme } from "@/theme";
 import { Text } from "react-native";
 
+const hasFinishedOnboarding = true;
+
 export default function Layout() {
+  if (!hasFinishedOnboarding) {
+    return <Redirect href="/onboarding" />;
+  }
+
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
       <Tabs.Screen
