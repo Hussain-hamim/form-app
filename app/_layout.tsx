@@ -13,7 +13,11 @@ export default function Layout() {
       />
       <Stack.Screen
         name="new"
-        options={{ presentation: "modal", title: "New Plant" }}
+        options={{
+          presentation: "modal",
+          title: "New Plant",
+          gestureDirection: "vertical",
+        }}
       />
     </Stack>
   );
