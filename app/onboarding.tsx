@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, Button, StatusBar } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
+import { PlantlyButton } from "@/components/PlantlyButton";
 
 export default function ProfileScreen() {
   const toggleHasOnboarded = useUserStore((state) => state.toggleHadOnboarded);
@@ -16,7 +17,7 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="white" />
-      <Button title="let me in!" onPress={handlePress} />
+      <PlantlyButton title="let me in!" onPress={handlePress} />
     </View>
   );
 }
