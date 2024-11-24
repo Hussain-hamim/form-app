@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, StatusBar } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
@@ -15,6 +15,7 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="white" />
       <Button title="let me in!" onPress={handlePress} />
     </View>
   );
