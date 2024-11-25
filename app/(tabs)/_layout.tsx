@@ -3,6 +3,7 @@ import { Link, Redirect, Tabs } from "expo-router";
 import { theme } from "@/theme";
 import { Pressable, Text } from "react-native";
 import { useUserStore } from "@/store/userStore";
+import { StatusBar } from "expo-status-bar";
 
 // const hasFinishedOnboarding = true;
 
@@ -16,41 +17,44 @@ export default function Layout() {
   }
 
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          // tabBarShowLabel: false,
-          tabBarLabel({ focused, color }) {
-            return <Text>{focused ? "Home" : ""}</Text>;
-          },
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="leaf" color={color} size={size} />
-          ),
-          headerRight: () => (
-            <Link href="/new" asChild>
-              <Pressable style={{ marginRight: 16 }} hitSlop={20}>
-                <Feather name="plus" size={26} color={theme.colorGreen} />
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          // tabBarShowLabel: false,
-          tabBarLabel({ focused, color }) {
-            return <Text>{focused ? "Profile" : ""}</Text>;
-          },
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="user" color={color} size={size} />
-          ),
-        }}
-      />
-    </Tabs>
+    <>
+      <StatusBar style="auto" />
+      <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "Home",
+            // tabBarShowLabel: false,
+            tabBarLabel({ focused, color }) {
+              return <Text>{focused ? "Home" : ""}</Text>;
+            },
+            tabBarIcon: ({ color, size }) => (
+              <Entypo name="leaf" color={color} size={size} />
+            ),
+            headerRight: () => (
+              <Link href="/new" asChild>
+                <Pressable style={{ marginRight: 16 }} hitSlop={20}>
+                  <Feather name="plus" size={26} color={theme.colorGreen} />
+                </Pressable>
+              </Link>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            // tabBarShowLabel: false,
+            tabBarLabel({ focused, color }) {
+              return <Text>{focused ? "Profile" : ""}</Text>;
+            },
+            tabBarIcon: ({ color, size }) => (
+              <Feather name="user" color={color} size={size} />
+            ),
+          }}
+        />
+      </Tabs>
+    </>
   );
 }
 
