@@ -21,23 +21,24 @@ export default function Layout() {
       <StatusBar style="auto" />
       <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
         <Tabs.Screen
-          name="index"
+          name="(home)"
           options={{
             title: "Home",
             // tabBarShowLabel: false,
+            headerShown: false,
             tabBarLabel({ focused, color }) {
               return <Text>{focused ? "Home" : ""}</Text>;
             },
             tabBarIcon: ({ color, size }) => (
               <Entypo name="leaf" color={color} size={size} />
             ),
-            headerRight: () => (
-              <Link href="/new" asChild>
-                <Pressable style={{ marginRight: 16 }} hitSlop={20}>
-                  <Feather name="plus" size={26} color={theme.colorGreen} />
-                </Pressable>
-              </Link>
-            ),
+            // headerRight: () => (
+            //   <Link href="/new" asChild>
+            //     <Pressable style={{ marginRight: 16 }} hitSlop={20}>
+            //       <Feather name="plus" size={26} color={theme.colorGreen} />
+            //     </Pressable>
+            //   </Link>
+            // ),
           }}
         />
         <Tabs.Screen
