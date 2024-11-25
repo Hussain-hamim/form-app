@@ -1,7 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { theme } from "@/theme";
-import App2 from "@/components/NewUI";
 import { usePlantStore } from "@/store/plantsStore";
 import { PlantCard } from "@/components/PlantCard";
 import { PlantlyButton } from "@/components/PlantlyButton";
@@ -30,8 +28,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colorWhite,
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   contentContainer: {
     padding: 12,
