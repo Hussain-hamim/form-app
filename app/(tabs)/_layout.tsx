@@ -20,7 +20,7 @@ export default function Layout() {
 
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <Tabs screenOptions={{ tabBarActiveTintColor: theme.colorGreen }}>
         <Tabs.Screen
           name="(home)"

@@ -27,7 +27,20 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-quick-actions",
+        {
+          "androidIcons": {
+            "leaf": {
+              "foregroundImage": "./assets/leaf.png",
+              "backgroundColor": "#ffffff"
+            }
+          }
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "881c11c9-024c-43be-9b4e-c74fab8d552c"
