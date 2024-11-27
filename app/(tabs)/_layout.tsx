@@ -7,6 +7,10 @@ import { StatusBar } from "expo-status-bar";
 
 // const hasFinishedOnboarding = true;
 
+export const unstable_settings = {
+  initialRouteName: "index",
+};
+
 export default function Layout() {
   // SplashScreen.hideAsync();
 

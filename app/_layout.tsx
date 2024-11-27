@@ -1,8 +1,8 @@
 import { Stack } from "expo-router";
 import { useEffect } from "react";
 import { Platform } from "react-native";
-import * as QuickAction from "expo-quick-actions";
-import { useQuickActionRouting } from "expo-quick-actions/router";
+// import * as QuickAction from "expo-quick-actions";
+// import { useQuickActionRouting } from "expo-quick-actions/router";
 
 // SplashScreen.preventAutoHideAsync();
 
