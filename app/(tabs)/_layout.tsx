@@ -1,5 +1,5 @@
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
-import { Link, Redirect, Tabs } from "expo-router";
+import { Link, Redirect, SplashScreen, Tabs } from "expo-router";
 import { theme } from "@/theme";
 import { Pressable, Text } from "react-native";
 import { useUserStore } from "@/store/userStore";
@@ -8,6 +8,8 @@ import { StatusBar } from "expo-status-bar";
 // const hasFinishedOnboarding = true;
 
 export default function Layout() {
+  // SplashScreen.hideAsync();
+
   const hasFinishedOnboarding = useUserStore(
     (state) => state.hasFinishedOnboarding
   );
