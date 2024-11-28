@@ -49,13 +49,15 @@ export default function NewScreen() {
     if (Platform.OS === "web") {
       return;
     }
-    //todo
+
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: "images",
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
     });
+
+    // console.log(result.assets[0].uri);
 
     if (!result.canceled) {
       setimageUri(result.assets[0].uri);
@@ -69,7 +71,7 @@ export default function NewScreen() {
       keyboardShouldPersistTaps="handled"
     >
       <TouchableOpacity
-        // activeOpacity={0.8}
+        activeOpacity={0.7}
         style={styles.centered}
         onPress={handleChooseImage}
       >

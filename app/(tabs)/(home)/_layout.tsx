@@ -13,7 +13,7 @@ export default function Layout() {
         options={{
           title: "Home",
           headerRight: () => (
-            <Link href="../../new" asChild>
+            <Link href="/new" asChild>
               <Pressable hitSlop={26}>
                 <Feather name="plus" size={26} color={theme.colorGreen} />
               </Pressable>

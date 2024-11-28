@@ -56,6 +56,7 @@ export default function PlantDetails() {
       `Are you sure you want to delete ${plant?.name}?`,
       "It will be gone for good",
       [
+        { text: "Cancel", style: "cancel" },
         {
           text: "Yes",
           onPress: () => {
@@ -64,7 +65,6 @@ export default function PlantDetails() {
           },
           style: "destructive",
         },
-        { text: "Cancel", style: "cancel" },
       ]
     );
   };
