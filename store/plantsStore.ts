@@ -24,19 +24,25 @@ type PlantsState = {
 };
 
 export const usePlantStore = create(
+  // persist middleware is for persistence the data
   persist<PlantsState>(
     (set) => ({
+      // initial state
       plants: [],
       nextId: 1,
+
+      // add a new plant
       addPlant: async (
         name: string,
         wateringFrequencyDays: number,
         imageUri?: string
       ) => {
+        // If imageUri is provided, the image is copied from its current location to a permanent directory using Expo's FileSystem API.
+        // The new location is defined by FileSystem.documentDirectory and includes a unique timestamp in the filename.
         const savedImageUri =
           FileSystem.documentDirectory +
           `${new Date().getTime()}-${imageUri?.split("/").slice(-1)[0]}`;
-
+        //FileSystem.copyAsync is used to copy the file:
         if (imageUri) {
           await FileSystem.copyAsync({
             from: imageUri,
@@ -44,6 +50,10 @@ export const usePlantStore = create(
           });
         }
 
+        /** 
+        Updates State:
+        1. Adds the new plant with a unique id, name, watering frequency, and optionally, the saved image URI.
+        2. Increments nextId */
         return set((state) => {
           return {
             ...state,
@@ -60,6 +70,7 @@ export const usePlantStore = create(
           };
         });
       },
+
       removePlant: (plantId: string) => {
         return set((state) => {
           return {
@@ -68,6 +79,7 @@ export const usePlantStore = create(
           };
         });
       },
+
       waterPlant: (plantId: string) => {
         return set((state) => {
           return {
