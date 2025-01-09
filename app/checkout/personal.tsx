@@ -116,25 +116,40 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { SubmitHandler, useForm, Controller } from "react-hook-form";
 
 export default function Personal() {
-  const [fullname, setFullname] = useState("");
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm();
 
   const onNext = () => {
-    console.log(fullname);
-
     router.push("/checkout/payment");
   };
 
   return (
     <KeyboardAwareScrollView>
-      <CustomTextInput
-        label="Full Name"
-        placeholder="Hussain"
-        placeholderTextColor="lightgray"
-        name="what"
-        returnKeyType="next"
+      <Controller
+        control={control}
+        name="fullName"
+        rules={{ required: "Name is required.", minLength: 3 }}
+        render={({ field: { value, onChange, onBlur } }) => (
+          ////
+          <CustomTextInput
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+        )}
       />
+
       <CustomTextInput
         label="َAddress"
         placeholder="Khost, Afghanistan"
@@ -166,7 +181,11 @@ export default function Personal() {
         name="what"
       />
 
-      <CustomButton onPress={onNext} style={styles.button} title="Checkout" />
+      <CustomButton
+        onPress={handleSubmit(onNext)} // we are calling onNext inside handleSubmit so that it only be called when the form validation passes
+        style={styles.button}
+        title="Checkout"
+      />
       <StatusBar style="auto" />
     </KeyboardAwareScrollView>
   );
