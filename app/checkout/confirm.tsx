@@ -82,6 +82,7 @@
 // });
 
 import CustomButton from "@/components/CustomButton";
+import KeyboardAwareScrollView from "@/components/KeyboardAwareScrollView";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -94,11 +95,12 @@ export default function confirm() {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <Text>confirm</Text>
+
       <CustomButton onPress={onNext} style={styles.button} title="submit" />
       <StatusBar style="auto" />
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
 

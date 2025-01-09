@@ -79,6 +79,7 @@
 // });
 
 import CustomButton from "@/components/CustomButton";
+import KeyboardAwareScrollView from "@/components/KeyboardAwareScrollView";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -89,21 +90,16 @@ export default function Payment() {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <Text>payment</Text>
-      <CustomButton onPress={onNext} style={styles.button} title="Checkout" />
+
+      <CustomButton onPress={onNext} style={styles.button} title="Next" />
       <StatusBar style="auto" />
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   button: {
     marginTop: "auto",
   },
