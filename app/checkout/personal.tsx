@@ -116,77 +116,71 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import {
+  SubmitHandler,
+  useForm,
+  Controller,
+  FormProvider,
+  FieldValues,
+} from "react-hook-form";
 
 export default function Personal() {
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-  } = useForm();
+  const form = useForm();
 
-  const onNext = () => {
+  const onNext = (data: FieldValues) => {
+    console.log(data);
     router.push("/checkout/payment");
   };
 
   return (
     <KeyboardAwareScrollView>
-      <Controller
-        control={control}
-        name="fullName"
-        rules={{ required: "Name is required.", minLength: 3 }}
-        render={({ field: { value, onChange, onBlur } }) => (
-          ////
+      <FormProvider {...form}>
+        <CustomTextInput
+          name="fullName"
+          label="Full Name"
+          placeholder="Hussain"
+          placeholderTextColor="lightgray"
+          returnKeyType="next"
+        />
+
+        <CustomTextInput
+          name="address"
+          label="َAddress"
+          placeholder="Khost, Afghanistan"
+          placeholderTextColor="lightgray"
+        />
+        <View style={{ flexDirection: "row", gap: 5 }}>
           <CustomTextInput
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            label="Full Name"
-            placeholder="Hussain"
+            name="city"
+            label="City"
+            containerStyle={{ flex: 1 }}
+            placeholder="Khost"
             placeholderTextColor="lightgray"
-            name="what"
-            returnKeyType="next"
           />
-        )}
-      />
+          <CustomTextInput
+            name="postCode"
+            label="Post Code"
+            containerStyle={{ flex: 1 }}
+            placeholder="1234"
+            placeholderTextColor="lightgray"
+          />
+        </View>
 
-      <CustomTextInput
-        label="َAddress"
-        placeholder="Khost, Afghanistan"
-        placeholderTextColor="lightgray"
-        name="what"
-      />
-      <View style={{ flexDirection: "row", gap: 5 }}>
         <CustomTextInput
-          containerStyle={{ flex: 1 }}
-          label="City"
-          placeholder="Khost"
+          name="phoneNumber"
+          label="Phone Number"
+          inputMode="tel"
+          placeholder="phone"
           placeholderTextColor="lightgray"
-          name="what"
         />
-        <CustomTextInput
-          containerStyle={{ flex: 1 }}
-          label="Post Code"
-          placeholder="1234"
-          placeholderTextColor="lightgray"
-          name="what"
+
+        <CustomButton
+          onPress={form.handleSubmit(onNext)} // we are calling onNext inside handleSubmit so that it only be called when the form validation passes
+          style={styles.button}
+          title="Checkout"
         />
-      </View>
-
-      <CustomTextInput
-        label="Phone Number"
-        inputMode="tel"
-        placeholder="phone"
-        placeholderTextColor="lightgray"
-        name="what"
-      />
-
-      <CustomButton
-        onPress={handleSubmit(onNext)} // we are calling onNext inside handleSubmit so that it only be called when the form validation passes
-        style={styles.button}
-        title="Checkout"
-      />
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
+      </FormProvider>
     </KeyboardAwareScrollView>
   );
 }

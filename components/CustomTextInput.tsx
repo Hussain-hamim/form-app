@@ -22,31 +22,27 @@ export default function CustomTextInput({
   name,
   ...textInputProps
 }: CustomTextInput) {
-  // const {
-  //   field: { value, onBlur, onChange },
-  //   fieldState: { error },
-  // } = useController({ name });
-
-  const error = {
-    message: "heyyyy",
-  };
+  const {
+    field: { value, onBlur, onChange },
+    fieldState: { error },
+  } = useController({ name });
 
   return (
     <View style={containerStyle}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         {...textInputProps}
-        // value={value}
-        // onBlur={onBlur}
-        // onChangeText={onChange}
+        value={value}
+        onBlur={onBlur}
+        onChangeText={onChange}
         style={[
           styles.input,
           textInputProps.style,
-          // error ? styles.errorInput : {},
+          error ? styles.errorInput : {},
         ]}
       />
       <Text style={styles.error} numberOfLines={1}>
-        {/* {error?.message} */}
+        {error?.message}
       </Text>
     </View>
   );
