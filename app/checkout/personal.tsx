@@ -106,7 +106,16 @@ import CustomTextInput from "@/components/CustomTextInput";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Personal() {
   const [fullname, setFullname] = useState("");
@@ -118,48 +127,99 @@ export default function Personal() {
   };
 
   return (
-    <View style={styles.container}>
-      <CustomTextInput
-        label="Full Name"
-        placeholder="Hussain"
-        placeholderTextColor="lightgray"
-        name="what"
-        returnKeyType="next"
-      />
-      <CustomTextInput
-        label="َAddress"
-        placeholder="Khost, Afghanistan"
-        placeholderTextColor="lightgray"
-        name="what"
-      />
-      <View style={{ flexDirection: "row", gap: 5 }}>
-        <CustomTextInput
-          containerStyle={{ flex: 1 }}
-          label="City"
-          placeholder="Khost"
-          placeholderTextColor="lightgray"
-          name="what"
-        />
-        <CustomTextInput
-          containerStyle={{ flex: 1 }}
-          label="Post Code"
-          placeholder="1234"
-          placeholderTextColor="lightgray"
-          name="what"
-        />
-      </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "position"}
+      style={{ flex: 1, backgroundColor: "white" }}
+      // keyboardVerticalOffset={110}
+    >
+      <ScrollView
+        style={{ backgroundColor: "white" }}
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <SafeAreaView edges={["bottom"]}>
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="Full Name"
+            placeholder="Hussain"
+            placeholderTextColor="lightgray"
+            name="what"
+            returnKeyType="next"
+          />
+          <CustomTextInput
+            label="َAddress"
+            placeholder="Khost, Afghanistan"
+            placeholderTextColor="lightgray"
+            name="what"
+          />
+          <View style={{ flexDirection: "row", gap: 5 }}>
+            <CustomTextInput
+              containerStyle={{ flex: 1 }}
+              label="City"
+              placeholder="Khost"
+              placeholderTextColor="lightgray"
+              name="what"
+            />
+            <CustomTextInput
+              containerStyle={{ flex: 1 }}
+              label="Post Code"
+              placeholder="1234"
+              placeholderTextColor="lightgray"
+              name="what"
+            />
+          </View>
 
-      <CustomTextInput
-        label="Phone Number"
-        inputMode="tel"
-        placeholder="phone"
-        placeholderTextColor="lightgray"
-        name="what"
-      />
+          <CustomTextInput
+            label="Phone Number"
+            inputMode="tel"
+            placeholder="phone"
+            placeholderTextColor="lightgray"
+            name="what"
+          />
 
-      <CustomButton onPress={onNext} style={styles.button} title="Checkout" />
-      <StatusBar style="auto" />
-    </View>
+          <CustomButton
+            onPress={onNext}
+            style={styles.button}
+            title="Checkout"
+          />
+          <StatusBar style="auto" />
+        </SafeAreaView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
