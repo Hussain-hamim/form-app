@@ -125,18 +125,10 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-const PersonalInfoSchema = z.object({
-  fullName: z
-    .string({ message: "Full name is required!" })
-    .min(1, { message: "Full name must be longer than 1" }),
-  address: z.string().min(1, { message: "Please provide your address!" }),
-  city: z.string().min(1, { message: "City is required!" }),
-  postcode: z.string().min(1, { message: "Postal code is required!" }),
-  phone: z.string().min(1, { message: "Phone is required!" }),
-});
-
-type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
+import {
+  PersonalInfo,
+  PersonalInfoSchema,
+} from "@/contexts/CheckoutFormProvider";
 
 export default function Personal() {
   const form = useForm<PersonalInfo>({

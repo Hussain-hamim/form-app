@@ -87,17 +87,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-const PaymentInfoSchema = z.object({
-  cardNumber: z.string().length(16),
-  expireDate: z
-    .string()
-    .min(1)
-    .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Please use the MM/YY format."),
-  cvv: z.coerce.number().min(100).max(999),
-});
-
-type PaymentInfo = z.infer<typeof PaymentInfoSchema>;
+import {
+  PaymentInfo,
+  PaymentInfoSchema,
+} from "@/contexts/CheckoutFormProvider";
 
 export default function Payment() {
   const form = useForm<PaymentInfo>({
