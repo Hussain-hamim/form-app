@@ -144,7 +144,7 @@ export default function Personal() {
   });
 
   const onNext: SubmitHandler<PersonalInfo> = (data) => {
-    console.log(data);
+    // console.log(data);
     router.push("/checkout/payment");
   };
 
@@ -204,7 +204,7 @@ export default function Personal() {
 const styles = StyleSheet.create({
   // container: {},
   button: {
-    marginTop: "90%",
+    marginTop: "50%",
     // position: "absolute",
     // bottom: 10,
   },

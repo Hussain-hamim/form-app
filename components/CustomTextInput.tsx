@@ -29,7 +29,7 @@ export default function CustomTextInput({
   } = useController({ name });
 
   return (
-    <View style={containerStyle}>
+    <View style={[containerStyle, styles.textInputCard]}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         {...textInputProps}
@@ -60,14 +60,17 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   errorInput: {
-    borderColor: "crimson",
+    borderColor: "tomato",
   },
   label: {
     fontWeight: "600",
     color: "dimgray",
   },
   error: {
-    color: "crimson",
+    color: "tomato",
     height: 17,
+  },
+  textInputCard: {
+    paddingBottom: 10,
   },
 });

@@ -87,6 +87,21 @@ import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
+const personalInfo = {
+  fullName: "Hussain",
+  address: "Khost",
+  city: "Khost",
+  postcode: "1234",
+  phone: "60123123123",
+  country: "Afg",
+};
+
+const paymentInfo = {
+  cardNumber: "1234123412341234",
+  expires: "01/30",
+  cvv: "123",
+};
+
 export default function confirm() {
   const onNext = () => {
     // router.dismissAll();
@@ -96,9 +111,47 @@ export default function confirm() {
 
   return (
     <KeyboardAwareScrollView>
-      <Text>confirm</Text>
+      <View style={{ gap: 10, flex: 1 }}>
+        {personalInfo && (
+          <View style={styles.dataContainer}>
+            <View style={styles.dataContainerHeader}>
+              <Text style={styles.title}>Personal</Text>
+              <Link
+                href={"/checkout"}
+                style={{ color: "#005055", fontWeight: "600" }}
+              >
+                Edit
+              </Link>
+            </View>
+            {Object.entries(personalInfo).map(([key, value]) => (
+              <Text key={key}>
+                {key}: {value?.toString()}
+              </Text>
+            ))}
+          </View>
+        )}
 
-      <CustomButton onPress={onNext} style={styles.button} title="submit" />
+        {paymentInfo && (
+          <View style={styles.dataContainer}>
+            <View style={styles.dataContainerHeader}>
+              <Text style={styles.title}>Payment</Text>
+              <Link
+                href={"/checkout/payment"}
+                style={{ color: "#005055", fontWeight: "600" }}
+              >
+                Edit
+              </Link>
+            </View>
+            {Object.entries(paymentInfo).map(([key, value]) => (
+              <Text key={key}>
+                {key}: {value?.toString()}
+              </Text>
+            ))}
+          </View>
+        )}
+        <CustomButton onPress={onNext} title="submit" />
+      </View>
+
       <StatusBar style="auto" />
     </KeyboardAwareScrollView>
   );
@@ -108,10 +161,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 15,
+    paddingBottom: 25,
+    gap: 15,
   },
-  button: {
-    // marginTop: "auto",
+  dataContainer: {
+    borderWidth: 1,
+    borderColor: "gainsboro",
+    padding: 10,
+    borderRadius: 10,
+    gap: 3,
+  },
+  dataContainerHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "600",
+    marginBottom: 10,
   },
 });
