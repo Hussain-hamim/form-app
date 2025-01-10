@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, ReactNode } from 'react';
+import { ComponentProps, forwardRef, ReactNode } from "react";
 import {
   Pressable,
   Text,
@@ -6,7 +6,7 @@ import {
   View,
   StyleProp,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
 
 type CustomButton = {
   rightIcon?: ReactNode;
@@ -27,22 +27,22 @@ const CustomButton = forwardRef<View, CustomButton>(
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#005055',
+    backgroundColor: "#005055",
     padding: 20,
     borderRadius: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     gap: 20,
-    width: '100%',
+    width: "100%",
   },
   buttonText: {
-    color: 'white',
-    fontWeight: '500',
+    color: "white",
+    fontWeight: "500",
     fontSize: 16,
     letterSpacing: 1.5,
   },
   rightIconContainer: {
-    position: 'absolute',
+    position: "absolute",
     right: 20,
   },
 });

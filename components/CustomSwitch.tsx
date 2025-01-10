@@ -23,7 +23,13 @@ export default function CustomSwitch({ name, label }: CustomSwitch) {
       }}
     >
       <Text style={{ fontSize: 16, fontWeight: "semibold" }}>{label}</Text>
-      <Switch style={{}} value={value} onValueChange={onChange} />
+      <Switch
+        thumbColor="#005055"
+        trackColor={{ false: "lightgray", true: "#005055" }}
+        style={{}}
+        value={value}
+        onValueChange={onChange}
+      />
     </View>
   );
 }
