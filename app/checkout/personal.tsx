@@ -123,11 +123,27 @@ import {
   FormProvider,
   FieldValues,
 } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const PersonalInfoSchema = z.object({
+  fullName: z
+    .string({ message: "Full name is required!" })
+    .min(1, { message: "Full name must be longer than 1" }),
+  address: z.string().min(1, { message: "Please provide your address!" }),
+  city: z.string().min(1, { message: "City is required!" }),
+  postcode: z.string().min(1, { message: "Postal code is required!" }),
+  phone: z.string().min(1, { message: "Phone is required!" }),
+});
+
+type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
 
 export default function Personal() {
-  const form = useForm();
+  const form = useForm<PersonalInfo>({
+    resolver: zodResolver(PersonalInfoSchema),
+  });
 
-  const onNext = (data: FieldValues) => {
+  const onNext: SubmitHandler<PersonalInfo> = (data) => {
     console.log(data);
     router.push("/checkout/payment");
   };
@@ -158,7 +174,7 @@ export default function Personal() {
             placeholderTextColor="lightgray"
           />
           <CustomTextInput
-            name="postCode"
+            name="postcode"
             label="Post Code"
             containerStyle={{ flex: 1 }}
             placeholder="1234"
@@ -167,7 +183,7 @@ export default function Personal() {
         </View>
 
         <CustomTextInput
-          name="phoneNumber"
+          name="phone"
           label="Phone Number"
           inputMode="tel"
           placeholder="phone"
