@@ -136,8 +136,6 @@ export default function confirm() {
         )}
         <CustomButton onPress={onSubmit} title="submit" />
       </View>
-
-      <StatusBar style="auto" />
     </KeyboardAwareScrollView>
   );
 }

@@ -18,7 +18,7 @@ export default function App() {
 
       <CustomButton onPress={onNext} title="Checkout" />
 
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </View>
   );
 }

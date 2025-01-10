@@ -88,6 +88,7 @@ export const PersonalInfoSchema = z.object({
   postcode: z.string().optional(),
   country: z.string().optional(),
   phone: z.string().optional(),
+  dateTime: z.date().optional(),
 });
 export type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
 

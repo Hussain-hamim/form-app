@@ -143,8 +143,6 @@ export default function Payment() {
           title="Next"
         />
       </FormProvider>
-
-      <StatusBar style="auto" />
     </KeyboardAwareScrollView>
   );
 }

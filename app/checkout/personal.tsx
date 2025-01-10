@@ -118,6 +118,7 @@ import RNPickerSelect from "react-native-picker-select";
 
 import countries from "../../assets/countries.json";
 import CustomPicker from "@/components/CustomPicker";
+import CustomDateTimePicker from "@/components/CustomDateTimePicker";
 // import CustomPicker from '../../components/CustomPicker';
 // import CustomDateTimePicker from '../../components/CustomDateTimePicker';
 
@@ -187,12 +188,13 @@ export default function Personal() {
           placeholderTextColor="lightgray"
         />
 
+        <CustomDateTimePicker name="dateTime" />
+
         <CustomButton
           onPress={form.handleSubmit(onNext)} // we are calling onNext inside handleSubmit so that it only be called when the form validation passes
           style={styles.button}
           title="Checkout"
         />
-        <StatusBar style="auto" />
       </FormProvider>
     </KeyboardAwareScrollView>
   );
