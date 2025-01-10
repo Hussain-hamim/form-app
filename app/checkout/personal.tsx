@@ -204,6 +204,8 @@ export default function Personal() {
 const styles = StyleSheet.create({
   // container: {},
   button: {
-    marginTop: "auto",
+    marginTop: "90%",
+    // position: "absolute",
+    // bottom: 10,
   },
 });
