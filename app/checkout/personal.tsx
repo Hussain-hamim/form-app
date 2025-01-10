@@ -114,6 +114,7 @@ import {
   PersonalInfoSchema,
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
+import RNPickerSelect from "react-native-picker-select";
 
 export default function Personal() {
   const { setPersonalInfo, personalInfo } = useCheckoutForm();
@@ -162,6 +163,15 @@ export default function Personal() {
             placeholderTextColor="lightgray"
           />
         </View>
+
+        <RNPickerSelect
+          onValueChange={(value) => console.log(value)}
+          items={[
+            { label: "Football", value: "football" },
+            { label: "Baseball", value: "baseball" },
+            { label: "Cricket", value: "cricket" },
+          ]}
+        />
 
         <CustomTextInput
           name="phone"
