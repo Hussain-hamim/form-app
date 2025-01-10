@@ -46,11 +46,18 @@ type CustomPicker = {
 } & Omit<ComponentProps<typeof RNPickerSelect>, "onValueChange">;
 
 export default function CustomPicker({ name, ...pickerProps }: CustomPicker) {
+  const {
+    field: { value, onChange, onBlur },
+    fieldState: { error },
+  } = useController({ name });
+
   return (
     <View style={{ marginVertical: 4 }}>
       <RNPickerSelect
+        value={value}
         {...pickerProps}
-        onValueChange={(value) => console.log(value)}
+        onValueChange={onChange}
+        onClose={onBlur}
         style={{
           viewContainer: {
             marginTop: 4,
@@ -67,6 +74,10 @@ export default function CustomPicker({ name, ...pickerProps }: CustomPicker) {
           },
         }}
       />
+
+      <Text style={{ color: "tomato", height: 17 }} numberOfLines={1}>
+        {error?.message}
+      </Text>
     </View>
   );
 }

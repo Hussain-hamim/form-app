@@ -86,6 +86,7 @@ export const PersonalInfoSchema = z.object({
   address: z.string().optional(),
   city: z.string().optional(),
   postcode: z.string().optional(),
+  country: z.string().optional(),
   phone: z.string().optional(),
 });
 export type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
@@ -95,6 +96,7 @@ export const PaymentInfoSchema = z.object({
   expireDate: z.string().optional(),
   // .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Please use the MM/YY format."),
   cvv: z.coerce.number().optional(),
+  saveCard: z.boolean().optional(),
 });
 export type PaymentInfo = z.infer<typeof PaymentInfoSchema>;
 

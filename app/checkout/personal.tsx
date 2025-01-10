@@ -175,7 +175,7 @@ export default function Personal() {
           // Icon={() => <Text>not just icon</Text>}
           items={countries.map((country) => ({
             label: country.name,
-            value: country.code,
+            value: country.name,
           }))}
         />
 
