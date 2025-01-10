@@ -12,7 +12,9 @@ export default function App() {
     <View style={styles.container}>
       <Stack.Screen />
 
-      <Text>Home screen</Text>
+      <Text style={{ fontWeight: "bold", fontSize: 40, paddingBottom: 150 }}>
+        Home screen
+      </Text>
 
       <CustomButton onPress={onNext} title="Checkout" />
 

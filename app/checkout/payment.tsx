@@ -90,14 +90,19 @@ import * as z from "zod";
 import {
   PaymentInfo,
   PaymentInfoSchema,
+  useCheckoutForm,
 } from "@/contexts/CheckoutFormProvider";
 
 export default function Payment() {
+  const { setPaymentInfo, paymentInfo } = useCheckoutForm();
+
   const form = useForm<PaymentInfo>({
     resolver: zodResolver(PaymentInfoSchema),
+    defaultValues: paymentInfo,
   });
 
   const onNext: SubmitHandler<PaymentInfo> = (data) => {
+    setPaymentInfo(data);
     router.push("/checkout/confirm");
   };
 

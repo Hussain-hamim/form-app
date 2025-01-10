@@ -83,31 +83,14 @@
 
 import CustomButton from "@/components/CustomButton";
 import KeyboardAwareScrollView from "@/components/KeyboardAwareScrollView";
+import { useCheckoutForm } from "@/contexts/CheckoutFormProvider";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-const personalInfo = {
-  fullName: "Hussain",
-  address: "Khost",
-  city: "Khost",
-  postcode: "1234",
-  phone: "60123123123",
-  country: "Afg",
-};
-
-const paymentInfo = {
-  cardNumber: "1234123412341234",
-  expires: "01/30",
-  cvv: "123",
-};
-
 export default function confirm() {
-  const onNext = () => {
-    // router.dismissAll();
-    // router.back();
-    router.push("/");
-  };
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { personalInfo, paymentInfo, onSubmit } = useCheckoutForm();
 
   return (
     <KeyboardAwareScrollView>
@@ -149,7 +132,7 @@ export default function confirm() {
             ))}
           </View>
         )}
-        <CustomButton onPress={onNext} title="submit" />
+        <CustomButton onPress={onSubmit} title="submit" />
       </View>
 
       <StatusBar style="auto" />
@@ -158,13 +141,6 @@ export default function confirm() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 15,
-    paddingBottom: 25,
-    gap: 15,
-  },
   dataContainer: {
     borderWidth: 1,
     borderColor: "gainsboro",

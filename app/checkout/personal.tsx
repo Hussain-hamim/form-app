@@ -128,15 +128,20 @@ import * as z from "zod";
 import {
   PersonalInfo,
   PersonalInfoSchema,
-} from "@/contexts/CheckoutFormProvider";
+  useCheckoutForm,
+} from "../../contexts/CheckoutFormProvider";
 
 export default function Personal() {
+  const { setPersonalInfo, personalInfo } = useCheckoutForm();
+
   const form = useForm<PersonalInfo>({
     resolver: zodResolver(PersonalInfoSchema),
+    defaultValues: personalInfo,
   });
 
   const onNext: SubmitHandler<PersonalInfo> = (data) => {
     // console.log(data);
+    setPersonalInfo(data);
     router.push("/checkout/payment");
   };
 
