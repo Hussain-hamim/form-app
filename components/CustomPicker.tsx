@@ -1,7 +1,7 @@
-// import { ComponentProps } from 'react';
-// import { useController } from 'react-hook-form';
-// import { View, Text } from 'react-native';
-// import RNPickerSelect from 'react-native-picker-select';
+import { ComponentProps } from "react";
+import { useController } from "react-hook-form";
+import { View, Text } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 // type CustomPicker = {
 //   name: string;
@@ -40,3 +40,33 @@
 //     </View>
 //   );
 // }
+
+type CustomPicker = {
+  name: string;
+} & Omit<ComponentProps<typeof RNPickerSelect>, "onValueChange">;
+
+export default function CustomPicker({ name, ...pickerProps }: CustomPicker) {
+  return (
+    <View style={{ marginVertical: 4 }}>
+      <RNPickerSelect
+        {...pickerProps}
+        onValueChange={(value) => console.log(value)}
+        style={{
+          viewContainer: {
+            marginTop: 4,
+            marginBottom: 4,
+            borderWidth: 1,
+            borderColor: "gainsboro",
+            borderRadius: 5,
+          },
+          inputIOS: {
+            borderWidth: 1,
+            width: "100%",
+            padding: 10,
+            borderRadius: 5,
+          },
+        }}
+      />
+    </View>
+  );
+}

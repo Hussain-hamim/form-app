@@ -106,7 +106,7 @@ import CustomTextInput from "@/components/CustomTextInput";
 import KeyboardAwareScrollView from "@/components/KeyboardAwareScrollView";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -115,6 +115,11 @@ import {
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
 import RNPickerSelect from "react-native-picker-select";
+
+import countries from "../../assets/countries.json";
+import CustomPicker from "@/components/CustomPicker";
+// import CustomPicker from '../../components/CustomPicker';
+// import CustomDateTimePicker from '../../components/CustomDateTimePicker';
 
 export default function Personal() {
   const { setPersonalInfo, personalInfo } = useCheckoutForm();
@@ -164,13 +169,14 @@ export default function Personal() {
           />
         </View>
 
-        <RNPickerSelect
-          onValueChange={(value) => console.log(value)}
-          items={[
-            { label: "Football", value: "football" },
-            { label: "Baseball", value: "baseball" },
-            { label: "Cricket", value: "cricket" },
-          ]}
+        <CustomPicker
+          name="country"
+          placeholder={{ label: "Select a country..." }}
+          // Icon={() => <Text>not just icon</Text>}
+          items={countries.map((country) => ({
+            label: country.name,
+            value: country.code,
+          }))}
         />
 
         <CustomTextInput

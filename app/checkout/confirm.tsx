@@ -108,7 +108,8 @@ export default function confirm() {
             </View>
             {Object.entries(personalInfo).map(([key, value]) => (
               <Text key={key}>
-                {key}: {value?.toString()}
+                {key}:{" "}
+                <Text style={{ fontWeight: "500" }}>{value?.toString()}</Text>
               </Text>
             ))}
           </View>
@@ -127,7 +128,8 @@ export default function confirm() {
             </View>
             {Object.entries(paymentInfo).map(([key, value]) => (
               <Text key={key}>
-                {key}: {value?.toString()}
+                {key}:{" "}
+                <Text style={{ fontWeight: "500" }}>{value?.toString()}</Text>
               </Text>
             ))}
           </View>
