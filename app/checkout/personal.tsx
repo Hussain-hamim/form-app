@@ -106,25 +106,9 @@ import CustomTextInput from "@/components/CustomTextInput";
 import KeyboardAwareScrollView from "@/components/KeyboardAwareScrollView";
 import { Link, router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import {
-  SubmitHandler,
-  useForm,
-  Controller,
-  FormProvider,
-  FieldValues,
-} from "react-hook-form";
+import { StyleSheet, View } from "react-native";
+import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import {
   PersonalInfo,
   PersonalInfoSchema,
@@ -201,8 +185,6 @@ export default function Personal() {
 const styles = StyleSheet.create({
   // container: {},
   button: {
-    marginTop: "50%",
-    // position: "absolute",
-    // bottom: 10,
+    marginTop: "auto",
   },
 });

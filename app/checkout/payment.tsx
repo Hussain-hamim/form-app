@@ -146,6 +146,6 @@ export default function Payment() {
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: "45%",
+    marginTop: "auto",
   },
 });
