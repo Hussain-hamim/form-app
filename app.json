@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Plantly",
-    "slug": "plantly",
-    "scheme": "plantly",
+    "name": "Form-app",
+    "slug": "form-app",
+    "scheme": "formapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,18 +22,13 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.plantly"
+      "package": "com.anonymous.formapp"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
     "plugins": ["expo-router"],
-    "extra": {
-      "eas": {
-        "projectId": "881c11c9-024c-43be-9b4e-c74fab8d552c"
-      }
-    },
     "owner": "hussain-hamim"
   }
 }
